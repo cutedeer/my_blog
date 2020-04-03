@@ -1,0 +1,17 @@
+#####
+spring:
+  profiles:
+    active: dev
+
+  thymeleaf:
+    cache: false #关闭缓存
+    prefix: classpath:/templates/pages/ #调整页面路径
+    check-template-location: true
+    suffix: .html
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    mode: HTML5
+####静态文件
+  mvc:
+    static-path-pattern: /static/**
