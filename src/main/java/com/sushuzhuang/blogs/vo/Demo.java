@@ -1,6 +1,9 @@
 package com.sushuzhuang.blogs.vo;
 
+import com.sushuzhuang.blogs.common.aop.NotEmptyFields;
+
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 /**
@@ -11,10 +14,10 @@ import java.util.List;
  */
 public class Demo {
 
-    @NotBlank(message = "不可为空")
+    @NotBlank(message = "add不可为空")
     private String add;
 
-    @NotBlank.List(@NotBlank)
+    @NotEmptyFields(message = "list不可为空")
     private List<String> list;
 
     public String getAdd() {
@@ -23,5 +26,13 @@ public class Demo {
 
     public void setAdd(String add) {
         this.add = add;
+    }
+
+    public List<String> getList() {
+        return list;
+    }
+
+    public void setList(List<String> list) {
+        this.list = list;
     }
 }

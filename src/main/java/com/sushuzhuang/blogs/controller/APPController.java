@@ -1,7 +1,9 @@
 package com.sushuzhuang.blogs.controller;
 
+import com.sushuzhuang.blogs.common.util.JacksonHandler;
 import com.sushuzhuang.blogs.vo.Demo;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,7 +26,8 @@ public class APPController {
 
     @RequestMapping("/test")
     @ResponseBody
-    public String test(@Valid Demo demo) {
+    public String test(@RequestBody @Valid Demo demo) {
+        System.out.println(JacksonHandler.toSerialize(demo));
         return "dd";
     }
 }
