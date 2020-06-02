@@ -3,7 +3,6 @@ package com.sushuzhuang.blogs.vo;
 import com.sushuzhuang.blogs.common.aop.NotEmptyFields;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import java.util.List;
 
 /**
