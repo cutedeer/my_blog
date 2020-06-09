@@ -37,7 +37,7 @@ public class Main {
 
 
         List<KVChildren<String, String>> collect = c.stream().
-//                sorted(Comparator.comparing(KVChildren::getValue)).
+                sorted(Comparator.comparing(KVChildren::getValue)).
                 filter(distinctByKey(KVChildren::getKey)).
                 collect(Collectors.toList());
 

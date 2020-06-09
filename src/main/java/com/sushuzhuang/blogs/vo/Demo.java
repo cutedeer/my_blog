@@ -17,7 +17,7 @@ public class Demo {
     private String add;
 
     @NotEmptyFields(message = "list不可为空")
-    private List<String> list;
+    private List<List<String>> list;
 
     public String getAdd() {
         return add;
@@ -27,11 +27,11 @@ public class Demo {
         this.add = add;
     }
 
-    public List<String> getList() {
+    public List<List<String>> getList() {
         return list;
     }
 
-    public void setList(List<String> list) {
+    public void setList(List<List<String>> list) {
         this.list = list;
     }
 }

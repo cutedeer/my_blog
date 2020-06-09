@@ -32,18 +32,24 @@ public @interface NotEmptyFields {
     Class<? extends Payload>[] payload() default {};
 }
 
-class NotEmptyFieldsValidator implements ConstraintValidator<NotEmptyFields, Collection<String>> {
+class NotEmptyFieldsValidator implements ConstraintValidator<NotEmptyFields, Collection<?>> {
 
     @Override
     public void initialize(NotEmptyFields notEmptyFields) {
     }
 
     @Override
-    public boolean isValid(Collection<String> objects, ConstraintValidatorContext context) {
+    public boolean isValid(Collection<?> objects, ConstraintValidatorContext context) {
         System.out.println(JacksonHandler.toSerialize(objects));
         if (CollectionUtils.isNotEmpty(objects)) {
-            for (String field : objects) {
-                if (StringUtils.isBlank(field)) {
+            for (Object field : objects) {
+                if (field == null) {
+                    return false;
+                }
+                if (field instanceof String && StringUtils.isBlank(field.toString())) {
+                    return false;
+                }
+                if (field instanceof Collection && !isValid((Collection<?>) field, context)) {
                     return false;
                 }
             }
